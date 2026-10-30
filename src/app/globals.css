@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-editorial), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-editorial: var(--font-editorial), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --color-ink-950: #070e17;
+  --color-ink-900: #0a1320;
+  --color-ink-850: #0d1a2c;
+  --color-ink-800: #122238;
+  --color-ink-700: #1a3250;
+
+  --color-gold-700: #8c5d10;
+  --color-gold-600: #ab7519;
+  --color-gold-500: #c98e27;
+  --color-gold-400: #e0a742;
+  --color-gold-100: #fbf1de;
+  --color-gold-50: #fefaf2;
+
+  --color-stone-25: #fcfbf9;
+  --color-stone-50: #f8f7f4;
+  --color-stone-100: #f2f0eb;
+  --color-stone-150: #ebe8e1;
+  --color-stone-200: #e2dfd7;
+  --color-stone-300: #ccc8be;
+  --color-stone-400: #a39e93;
+  --color-stone-500: #787368;
+  --color-stone-600: #59554d;
+  --color-stone-700: #423f38;
+  --color-stone-800: #2b2925;
+  --color-stone-900: #1c1b18;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-stone-900);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-editorial {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
+/* Subtle, refined hairline rules */
+.hairline-b {
+  border-bottom: 1px solid rgba(28, 27, 24, 0.08);
+}
+.hairline-t {
+  border-top: 1px solid rgba(28, 27, 24, 0.08);
+}
+.hairline-l {
+  border-left: 1px solid rgba(28, 27, 24, 0.08);
+}
+.hairline-r {
+  border-right: 1px solid rgba(28, 27, 24, 0.08);
+}
+.hairline {
+  border: 1px solid rgba(28, 27, 24, 0.08);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-ink-900);
+  outline-offset: 2px;
+}
