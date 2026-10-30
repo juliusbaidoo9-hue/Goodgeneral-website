@@ -13,7 +13,7 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <div className="relative w-8 h-8 flex-shrink-0">
                 <Image
-                  src="/brand/logo-light-transparent.png"
+                  src="/brand/actual-emblem-white-gold.png"
                   alt="Good General Publications & Stationery"
                   width={32}
                   height={32}

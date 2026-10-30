@@ -27,7 +27,7 @@ export function Navbar() {
           >
             <div className="relative w-8 h-8 sm:w-9 sm:h-9 flex-shrink-0">
               <Image
-                src="/brand/logo-light-transparent.png"
+                src="/brand/actual-emblem-white-gold.png"
                 alt="Good General Publications & Stationery"
                 width={36}
                 height={36}
