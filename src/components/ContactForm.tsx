@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Check, Mail, MessageSquare } from "lucide-react";
 
 interface FormState {
   name: string;
@@ -45,6 +46,7 @@ export function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -85,9 +87,10 @@ export function ContactForm() {
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
+    if (serverError) setServerError(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validate()) {
@@ -95,11 +98,32 @@ export function ContactForm() {
     }
 
     setIsSubmitting(true);
+    setServerError(null);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch("/api/enquire", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit enquiry");
+      }
+
       setSubmitted(true);
-    }, 300);
+    } catch (err: any) {
+      console.error("Enquiry submission error:", err);
+      setServerError(
+        err?.message || "There was an issue sending your message. Please try again or message us directly on WhatsApp."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const generateWhatsAppMessage = () => {
@@ -117,41 +141,23 @@ Thank you.`;
     return encodeURIComponent(text);
   };
 
-  const generateMailtoLink = () => {
-    const subject = encodeURIComponent(
-      `School Project Enquiry - ${formData.school || "Good General"}`
-    );
-    const body = encodeURIComponent(`Dear Good General Publications & Stationery team,
-
-I would like to enquire about a school project:
-
-Name: ${formData.name}
-School / Organisation: ${formData.school}
-Email: ${formData.email}
-Phone / WhatsApp: ${formData.phone}
-Primary Need: ${formData.need}
-
-Project Details:
-${formData.message || "We would like to discuss specifications and sample coordination."}
-
-Best regards,
-${formData.name}`);
-
-    return `mailto:${contactDetails.email}?subject=${subject}&body=${body}`;
-  };
-
   return (
     <div className="bg-white rounded-lg border border-stone-200 p-6 sm:p-8 lg:p-10 shadow-lg text-stone-900">
       {submitted ? (
         <div className="space-y-6">
-          <div className="border-l-2 border-[#0A1C33] pl-4 py-1">
-            <h3 className="font-editorial text-2xl font-bold text-[#0A1C33]">
-              Enquiry compiled
-            </h3>
-            <p className="mt-1.5 text-sm text-stone-600 leading-relaxed">
-              Thank you, <strong className="text-stone-900 font-semibold">{formData.name}</strong> from{" "}
-              <strong className="text-stone-900 font-semibold">{formData.school}</strong>. Your enquiry details have been organized.
-            </p>
+          <div className="flex items-start gap-3.5 border-l-2 border-[#102A43] pl-4 py-1">
+            <div className="w-8 h-8 rounded-full bg-[#102A43] text-white flex items-center justify-center shrink-0 mt-0.5">
+              <Check className="w-4 h-4 stroke-[3]" />
+            </div>
+            <div>
+              <h3 className="font-editorial text-2xl font-bold text-[#102A43]">
+                Message sent successfully
+              </h3>
+              <p className="mt-1 text-sm text-stone-600 leading-relaxed">
+                Thank you, <strong className="text-stone-900 font-semibold">{formData.name}</strong> from{" "}
+                <strong className="text-stone-900 font-semibold">{formData.school}</strong>. Your enquiry has been delivered directly to <span className="font-medium text-[#102A43]">{contactDetails.email}</span>.
+              </p>
+            </div>
           </div>
 
           <div className="bg-stone-50 rounded border border-stone-200 p-4 text-xs space-y-2 text-stone-700">
@@ -170,23 +176,19 @@ ${formData.name}`);
 
           <div className="space-y-3 pt-1">
             <p className="text-xs text-stone-600">
-              Choose your direct transmission channel to send these details to our team right away:
+              Need immediate answers? You can also connect directly with our coordination desk via WhatsApp:
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 pt-1">
-              <Button asChild variant="primary">
+              <Button asChild variant="gold">
                 <a
                   href={`https://wa.me/233596391615?text=${generateWhatsAppMessage()}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center gap-2"
                 >
-                  Send via WhatsApp (059 639 1615)
-                </a>
-              </Button>
-
-              <Button asChild variant="secondary">
-                <a href={generateMailtoLink()}>
-                  Send via Email ({contactDetails.email})
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Chat on WhatsApp (059 639 1615)</span>
                 </a>
               </Button>
             </div>
@@ -208,12 +210,18 @@ ${formData.name}`);
               }}
               className="text-xs text-stone-500 hover:text-stone-900 underline underline-offset-4"
             >
-              Start another enquiry
+              Send another enquiry
             </button>
           </div>
         </div>
       ) : (
         <form onSubmit={handleSubmit} noValidate className="space-y-4">
+          {serverError && (
+            <div className="p-3.5 rounded bg-rose-50 border border-rose-200 text-xs text-rose-700 leading-relaxed">
+              {serverError}
+            </div>
+          )}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
               <Label htmlFor="name">
@@ -249,7 +257,7 @@ ${formData.name}`);
                 name="school"
                 value={formData.school}
                 onChange={handleChange}
-                placeholder="e.g. St. Andrew Academy, Accra"
+                placeholder="e.g. St. Andrew Academy"
                 required
                 aria-required="true"
                 aria-invalid={!!errors.school}
@@ -275,7 +283,7 @@ ${formData.name}`);
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="bursar@school.edu.gh"
+                placeholder="head@standrew.edu.gh"
                 required
                 aria-required="true"
                 aria-invalid={!!errors.email}
@@ -291,7 +299,7 @@ ${formData.name}`);
 
             <div className="space-y-1.5">
               <Label htmlFor="phone">
-                Phone or WhatsApp number <span className="text-rose-600" aria-hidden="true">*</span>
+                Phone / WhatsApp number <span className="text-rose-600" aria-hidden="true">*</span>
               </Label>
               <Input
                 type="tel"
@@ -299,7 +307,7 @@ ${formData.name}`);
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="024 XXX XXXX or 059 XXX XXXX"
+                placeholder="024 123 4567"
                 required
                 aria-required="true"
                 aria-invalid={!!errors.phone}
@@ -316,7 +324,7 @@ ${formData.name}`);
 
           <div className="space-y-1.5">
             <Label htmlFor="need">
-              What does your school need? <span className="text-rose-600" aria-hidden="true">*</span>
+              Primary requirement <span className="text-rose-600" aria-hidden="true">*</span>
             </Label>
             <select
               id="need"
@@ -327,7 +335,7 @@ ${formData.name}`);
               aria-required="true"
               aria-invalid={!!errors.need}
               aria-describedby={errors.need ? "need-error" : undefined}
-              className={`flex h-11 w-full rounded-md border bg-white px-3.5 py-2 text-sm text-stone-900 transition-colors focus-visible:outline-none focus-visible:border-[#0A1C33] focus-visible:ring-1 focus-visible:ring-[#0A1C33] ${
+              className={`flex h-11 w-full rounded-md border bg-white px-3.5 py-2 text-sm text-stone-900 transition-colors focus-visible:outline-none focus-visible:border-[#102A43] focus-visible:ring-1 focus-visible:ring-[#102A43] ${
                 errors.need ? "border-rose-500 ring-1 ring-rose-500" : "border-stone-300"
               }`}
             >
@@ -367,7 +375,7 @@ ${formData.name}`);
               disabled={isSubmitting}
               className="w-full h-11 text-sm font-semibold"
             >
-              {isSubmitting ? "Processing..." : brandContent.ctaLabel}
+              {isSubmitting ? "Sending message..." : brandContent.ctaLabel}
             </Button>
             <p className="mt-2 text-[11px] text-stone-500 text-center">
               Direct consultation for private school heads and bursars in Greater Accra. No obligation.
