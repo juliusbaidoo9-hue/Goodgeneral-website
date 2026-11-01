@@ -215,27 +215,8 @@ export default function HomePage() {
       </section>
 
       {/* 3. PHYSICAL SPECIMENS GALLERY (Minimal editorial showcase) */}
-      <section id="specimens" className="py-20 sm:py-28 bg-white hairline-b">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <ScrollReveal direction="up" className="max-w-xl space-y-2">
-              <h2 className="font-editorial text-3xl sm:text-4xl font-bold text-[#102A43] tracking-tight">
-                Physical production specimens
-              </h2>
-              <p className="text-sm sm:text-base text-stone-600 leading-relaxed font-normal">
-                Actual books coordinated for Ghanaian schools: stitched binding, reinforced spine tape, and precise institutional heraldry.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal direction="up" delay={0.1}>
-              <Button asChild variant="secondary" size="sm">
-                <a href="#enquire" className="text-xs">
-                  <span>Request physical sample</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </Button>
-            </ScrollReveal>
-          </div>
-
+      <section id="specimens" className="py-16 sm:py-24 bg-white hairline-b">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Minimal 4-column photo grid with restrained borders & subtle hover scale */}
           <ScrollStaggerContainer staggerDelay={0.08} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <ScrollStaggerItem>
