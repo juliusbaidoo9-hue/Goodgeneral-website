@@ -214,7 +214,102 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. BANNER SECTION */}
+      {/* 3. PHYSICAL SPECIMENS GALLERY (Minimal editorial showcase) */}
+      <section id="specimens" className="py-20 sm:py-28 bg-white hairline-b">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <ScrollReveal direction="up" className="max-w-xl space-y-2">
+              <h2 className="font-editorial text-3xl sm:text-4xl font-bold text-[#102A43] tracking-tight">
+                Physical production specimens
+              </h2>
+              <p className="text-sm sm:text-base text-stone-600 leading-relaxed font-normal">
+                Actual books coordinated for Ghanaian schools: stitched binding, reinforced spine tape, and precise institutional heraldry.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.1}>
+              <Button asChild variant="secondary" size="sm">
+                <a href="#enquire" className="text-xs">
+                  <span>Request physical sample</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </Button>
+            </ScrollReveal>
+          </div>
+
+          {/* Minimal 4-column photo grid with restrained borders & subtle hover scale */}
+          <ScrollStaggerContainer staggerDelay={0.08} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <ScrollStaggerItem>
+              <div className="group relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
+                <Image
+                  src="/images/mis/mis-books-flatlay-full.jpg"
+                  alt="Actual exercise book covers and notebook collection flatlay"
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
+                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
+                  <span className="text-xs font-medium text-white tracking-wide">
+                    School-branded series
+                  </span>
+                </div>
+              </div>
+            </ScrollStaggerItem>
+
+            <ScrollStaggerItem>
+              <div className="group relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
+                <Image
+                  src="/images/mis/mis-note3-standing.jpg"
+                  alt="Standing notebook specimen showing reinforced yellow cloth spine tape"
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
+                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
+                  <span className="text-xs font-medium text-white tracking-wide">
+                    Reinforced tape spine
+                  </span>
+                </div>
+              </div>
+            </ScrollStaggerItem>
+
+            <ScrollStaggerItem>
+              <div className="group relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
+                <Image
+                  src="/images/mis/mis-fanned-purple.jpg"
+                  alt="Fanned purple notebook series displaying school crest and student details"
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
+                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
+                  <span className="text-xs font-medium text-white tracking-wide">
+                    Grade-coded colourways
+                  </span>
+                </div>
+              </div>
+            </ScrollStaggerItem>
+
+            <ScrollStaggerItem>
+              <div className="group relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
+                <Image
+                  src="/images/mis/mis-shelf-clean.jpg"
+                  alt="Neatly arranged notebook batches on school shelving ready for term issue"
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
+                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
+                  <span className="text-xs font-medium text-white tracking-wide">
+                    Class-by-class packing
+                  </span>
+                </div>
+              </div>
+            </ScrollStaggerItem>
+          </ScrollStaggerContainer>
+        </div>
+      </section>
+
+      {/* 4. BANNER SECTION */}
       <section className="py-20 sm:py-24 bg-[#102A43] text-white text-center relative overflow-hidden">
         <ScrollReveal direction="scale" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
           <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
