@@ -220,70 +220,50 @@ export default function HomePage() {
           {/* Minimal 4-column photo grid with restrained borders & subtle hover scale */}
           <ScrollStaggerContainer staggerDelay={0.08} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <ScrollStaggerItem>
-              <div className="group relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
+              <div className="relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
                 <Image
                   src="/images/mis/mis-books-flatlay-full.jpg"
                   alt="Actual exercise book covers and notebook collection flatlay"
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
-                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
-                  <span className="text-xs font-medium text-white tracking-wide">
-                    School-branded series
-                  </span>
-                </div>
               </div>
             </ScrollStaggerItem>
 
             <ScrollStaggerItem>
-              <div className="group relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
+              <div className="relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
                 <Image
                   src="/images/mis/mis-note3-standing.jpg"
                   alt="Standing notebook specimen showing reinforced yellow cloth spine tape"
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
-                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
-                  <span className="text-xs font-medium text-white tracking-wide">
-                    Reinforced tape spine
-                  </span>
-                </div>
               </div>
             </ScrollStaggerItem>
 
             <ScrollStaggerItem>
-              <div className="group relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
+              <div className="relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
                 <Image
                   src="/images/mis/mis-fanned-purple.jpg"
                   alt="Fanned purple notebook series displaying school crest and student details"
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
-                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
-                  <span className="text-xs font-medium text-white tracking-wide">
-                    Grade-coded colourways
-                  </span>
-                </div>
               </div>
             </ScrollStaggerItem>
 
             <ScrollStaggerItem>
-              <div className="group relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
+              <div className="relative rounded-lg overflow-hidden bg-stone-100 border border-stone-200/80 aspect-[3/4] shadow-xs">
                 <Image
                   src="/images/mis/mis-shelf-clean.jpg"
                   alt="Neatly arranged notebook batches on school shelving ready for term issue"
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
-                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3.5">
-                  <span className="text-xs font-medium text-white tracking-wide">
-                    Class-by-class packing
-                  </span>
-                </div>
               </div>
             </ScrollStaggerItem>
           </ScrollStaggerContainer>
