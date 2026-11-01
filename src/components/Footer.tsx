@@ -54,7 +54,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-amber-300 hover:underline"
               >
-                059 639 1615
+                {contactDetails.phone}
               </a>
             </p>
             <p>

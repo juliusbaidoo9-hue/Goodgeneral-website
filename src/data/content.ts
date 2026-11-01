@@ -9,9 +9,9 @@ export interface ContactDetails {
 }
 
 export const contactDetails: ContactDetails = {
-  phone: "059 639 1615",
-  phoneTel: "tel:0596391615",
-  whatsappUrl: "https://wa.me/233596391615",
+  phone: "059 177 5955",
+  phoneTel: "tel:0591775955",
+  whatsappUrl: "https://wa.me/233591775955",
   email: "info@goodgeneralgh.com",
   emailMailto: "mailto:info@goodgeneralgh.com",
   socialName: "Good General GH",
