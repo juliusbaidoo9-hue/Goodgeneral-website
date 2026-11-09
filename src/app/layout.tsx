@@ -5,6 +5,7 @@ import "./globals.css";
 import { MantineProvider } from "@mantine/core";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const serifFont = Source_Serif_4({
   subsets: ["latin"],
@@ -65,6 +66,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </MantineProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
