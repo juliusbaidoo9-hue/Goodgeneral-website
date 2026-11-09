@@ -66,7 +66,25 @@ export function Footer() {
             <p>{contactDetails.location}</p>
 
             {/* Social Media Links */}
-            <div className="pt-2 flex items-center gap-4 text-stone-300">
+            <div className="pt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-stone-300">
+              <a
+                href={contactDetails.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Good General on Facebook"
+                className="flex items-center gap-1.5 hover:text-white transition-colors"
+              >
+                <svg
+                  className="w-4 h-4 fill-current shrink-0"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+                <span>Facebook</span>
+              </a>
+
+              <span className="text-stone-600" aria-hidden="true">&bull;</span>
+
               <a
                 href={contactDetails.instagramUrl}
                 target="_blank"

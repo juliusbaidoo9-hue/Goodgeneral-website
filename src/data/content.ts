@@ -6,6 +6,7 @@ export interface ContactDetails {
   emailMailto: string;
   socialName: string;
   location: string;
+  facebookUrl: string;
   tiktokUrl: string;
   instagramUrl: string;
 }
@@ -18,6 +19,7 @@ export const contactDetails: ContactDetails = {
   emailMailto: "mailto:info@goodgeneralgh.com",
   socialName: "Good General GH",
   location: "Greater Accra, Ghana",
+  facebookUrl: "https://www.facebook.com/goodgeneralgh",
   tiktokUrl: "https://www.tiktok.com/@goodgeneral_gh?_r=1&_t=ZS-9BG81Lj7JV1",
   instagramUrl: "https://www.instagram.com/invites/contact/?utm_content=r783ymd&psln=1j4t58yxs37jf",
 };

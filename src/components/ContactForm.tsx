@@ -182,13 +182,13 @@ Thank you.`;
             <div className="flex flex-col sm:flex-row gap-3 pt-1">
               <Button asChild variant="gold">
                 <a
-                  href={`https://wa.me/233596391615?text=${generateWhatsAppMessage()}`}
+                  href={`${contactDetails.whatsappUrl}?text=${generateWhatsAppMessage()}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>Chat on WhatsApp (059 639 1615)</span>
+                  <span>Chat on WhatsApp ({contactDetails.phone})</span>
                 </a>
               </Button>
             </div>
