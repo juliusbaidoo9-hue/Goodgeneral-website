@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Source_Serif_4, Inter } from "next/font/google";
 import "@mantine/core/styles.css";
 import "./globals.css";
@@ -65,6 +66,19 @@ export default function RootLayout({
           </main>
           <Footer />
         </MantineProvider>
+
+        {/* Zoho SalesIQ Widget */}
+        <Script id="zsiq-init" strategy="afterInteractive">
+          {`
+            window.$zoho = window.$zoho || {};
+            $zoho.salesiq = $zoho.salesiq || { ready: function(){} };
+          `}
+        </Script>
+        <Script
+          id="zsiqscript"
+          src="https://salesiq.zoho.com/widget?wc=siq7e5d519358379cb29711a13fa4680f2c02d2698b6afe2e44e62b1695382702e8"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
